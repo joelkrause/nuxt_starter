@@ -19,15 +19,10 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-//  loading: false,
-  layoutTransition: {
-    name: "layout",
-    mode: ""
-  },
   /* Page Transitions */
   pageTransition: {
     name: "default",
-    mode: ""
+    mode: "out-in"
   },
   /*
   ** Global CSS
