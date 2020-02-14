@@ -1,0 +1,10 @@
+.default-enter-active,
+.default-leave-active {
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+.default-enter,
+.default-leave-to {
+  transform: translateY(75px);
+}
