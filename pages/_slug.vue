@@ -38,6 +38,15 @@ export default {
   },
   created() {
     this.$store.dispatch("getPages");
-  }
+  },
+  head () {
+    return {
+      title: this.$store.state.pages.find(el => el.slug === this.slug).title.rendered,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
+  },
 }
 </script>
