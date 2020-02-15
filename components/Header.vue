@@ -2,7 +2,7 @@
     <header class="site__header">
         <div class="site__header-logo">
           <nuxt-link to="/">
-            Site Name
+            <Logo />
           </nuxt-link>
         </div>
         <Navigation />
@@ -11,10 +11,12 @@
 
 <script>
 import Navigation from '~/components/Navigation.vue'
+import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
-    Navigation
+    Navigation,
+    Logo
   }
 }
 </script>
@@ -28,6 +30,10 @@ export default {
       padding:$padding_xl;
     }
     &-logo{
+      svg{
+        max-width:50px;
+        height:auto;
+      }
       a{
         color:black;
         text-decoration: none;
