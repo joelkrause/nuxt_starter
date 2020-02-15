@@ -1,15 +1,30 @@
 <template>
     <nav class="site__nav">
         <ul>
-            <li>
-                <nuxt-link to="/">Link</nuxt-link>
-                <nuxt-link to="about">About</nuxt-link>
-                <nuxt-link to="/">Link</nuxt-link>
-                <nuxt-link to="/">Link</nuxt-link>
+            <li v-for="item in menus" :key="1">
+                <nuxt-link :to="item.slug">{{ item.title }}</nuxt-link>
             </li>
         </ul>
     </nav>
 </template>
+
+<script>
+import Footer from '~/components/Footer.vue'
+
+export default {
+  components: {
+    Footer
+  },
+computed: {
+  menus() {
+    return this.$store.state.menus;
+  },
+ },
+created() {
+  this.$store.dispatch("getMenu");
+},
+};
+</script>
 
 <style lang="scss">
 .site__nav {

@@ -2,7 +2,8 @@ const siteURL = "http://gatsbywordpressforms.local"
 
 export const state = () => ({
   posts: [],
-  pages: []
+  pages: [],
+  menus: []
 })
 
 export const mutations = {
@@ -11,6 +12,9 @@ export const mutations = {
   },
   updatepages: (state, pages) => {
     state.pages = pages
+  },
+  updateMenus: (state, menus) => {
+    state.menus = menus
   }
 }
 
@@ -61,6 +65,29 @@ export const actions = {
       }))
 
       commit("updatepages", pages)
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  async getMenu({ state, commit }) {
+    if (state.menus.length) return
+
+    let allMenus = state.menus.reduce((acc, item) => {
+      return acc.concat(item.menus)
+    }, [])
+    allMenus = allMenus.join()
+
+    try {
+      let menus = await fetch(
+        `${siteURL}/wp-json/menus/v1/menus/navigation`
+      ).then(res => res.json())
+
+      menus = menus.items.map(({ title, slug }) => ({
+        title,
+        slug
+      }))
+
+      commit("updateMenus", menus)
     } catch (err) {
       console.log(err)
     }
