@@ -1,0 +1,23 @@
+.site__nav {
+    ul,li{
+        list-style: none;
+        padding: 0;
+        margin:0;
+    }
+    ul{
+        display: flex;
+        li{
+            &:not(:last-of-type){
+                margin-right: 1rem;
+            }
+
+            a {
+                text-decoration: none;
+                color:black;
+                &.nuxt-link-active{
+                    color:blue;
+                }
+            }
+        }
+    }
+}

@@ -20,24 +20,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.site__header {
-    display:flex;
-    justify-content: space-between;
-    padding:$padding_sm;
-    @include breakpoint(up,tablet-landscape){
-      padding:$padding_xl;
-    }
-    &-logo{
-      svg{
-        max-width:50px;
-        height:auto;
-      }
-      a{
-        color:black;
-        text-decoration: none;
-      }
-    }
-}
-</style>

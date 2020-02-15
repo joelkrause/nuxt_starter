@@ -3,6 +3,11 @@
         <ul>
             <li v-for="item in menus" :key="1">
                 <nuxt-link :to="item.slug">{{ item.title }}</nuxt-link>
+                <ul v-if="item.child_items" class="sub-menu">
+                    <li v-for="item in item.child_items" :key="1">
+                        <nuxt-link :to="item.slug">{{ item.title }}</nuxt-link>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
@@ -25,26 +30,3 @@ created() {
 },
 };
 </script>
-
-<style lang="scss">
-.site__nav {
-    ul,li{
-        list-style: none;
-        padding: 0;
-        margin:0;
-    }
-    ul{
-        display: flex;
-        li{
-            &:not(:last-of-type){
-                margin-right: 1rem;
-            }
-
-            a {
-                color:black;
-                text-decoration: none;
-            }
-        }
-    }
-}
-</style>

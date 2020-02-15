@@ -57,11 +57,12 @@ export const actions = {
         `${siteURL}/wp-json/wp/v2/pages`
       ).then(res => res.json())
 
-      pages = pages.map(({ id, name, slug, title, content }) => ({
+      pages = pages.map(({ id, name, slug, title, content, acf }) => ({
         id,
         slug,
         title,
-        content
+        content,
+        acf
       }))
 
       commit("updatepages", pages)
@@ -82,9 +83,10 @@ export const actions = {
         `${siteURL}/wp-json/menus/v1/menus/navigation`
       ).then(res => res.json())
 
-      menus = menus.items.map(({ title, slug }) => ({
+      menus = menus.items.map(({ title, slug, child_items }) => ({
         title,
-        slug
+        slug,
+        child_items
       }))
 
       commit("updateMenus", menus)
