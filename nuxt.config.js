@@ -1,7 +1,7 @@
 import axios from "axios"
 let dynamicRoutes = () => {
   const routes = axios
-    .get("http://gatsbywordpressforms.local/wp-json/wp/v2/pages")
+    .get("http://pep-creative.wp/wp-json/wp/v2/pages")
     .then(res => {
       return res.data.map(page => `/${page.slug}`)
     })

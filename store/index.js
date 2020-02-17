@@ -1,12 +1,16 @@
-const siteURL = "http://gatsbywordpressforms.local"
+const siteURL = "http://pep-creative.wp"
 
 export const state = () => ({
+  siteInfo: [],
   posts: [],
   pages: [],
   menus: []
 })
 
 export const mutations = {
+  updateSiteInfo: (state,siteInfo) => {
+    state.siteInfo = siteInfo
+  },
   updatePosts: (state, posts) => {
     state.posts = posts
   },
@@ -19,6 +23,24 @@ export const mutations = {
 }
 
 export const actions = {
+  async getSiteInfo({state, commit, dispatch}){
+    if (state.posts.length) return
+  
+    try {
+      let siteInfo = await fetch(
+        `${siteURL}/wp-json/site/v1/settings`
+      ).then(res => res.json())
+
+      siteInfo = siteInfo.map(({ site_name, site_description }) => ({
+        site_name,
+        site_description
+      }))
+
+      commit("updateSiteInfo", siteInfo)
+    } catch (err) {
+      console.log(err)
+    }
+  },
   async getPosts({ state, commit, dispatch }) {
     if (state.posts.length) return
 
