@@ -24,7 +24,7 @@ export const mutations = {
 
 export const actions = {
   async getSiteInfo({state, commit, dispatch}){
-    if (state.posts.length) return
+    if (state.siteInfo.length) return
   
     try {
       let siteInfo = await fetch(
